@@ -1,0 +1,112 @@
+Archive Project report for transmitter
+Fri Sep 15 10:55:21 2023
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Archive Project Summary
+  3. Archive Project Messages
+  4. Files Archived
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------+
+; Archive Project Summary                                        ;
++------------------------+---------------------------------------+
+; Archive Project Status ; Successful - Fri Sep 15 10:55:21 2023 ;
+; Revision Name          ; transmitter                           ;
+; Top-level Entity Name  ; test_transmitter                      ;
+; Family                 ; Cyclone III                           ;
++------------------------+---------------------------------------+
+
+
++--------------------------+
+; Archive Project Messages ;
++--------------------------+
+Info: File Set 'Source control' contains:
+    Info: Project source and settings files
+    Info: Automatically detected source files
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated archive 'C:/VHDL/lab-summary/UART_transmitter_restored/lab-summary.qar'
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated report 'transmitter.archive.rpt'
+Info: Evaluation of Tcl script c:/altera/91sp2/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 146 megabytes
+    Info: Processing ended: Fri Sep 15 10:55:21 2023
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
+
+
++-------------------------------+
+; Files Archived                ;
++-------------------------------+
+; File Name                     ;
++-------------------------------+
+; accdec_pins.tcl               ;
+; assignment_defaults.qdf       ;
+; bcdToBinary_pins.tcl          ;
+; bin2bcd_vec_pins.tcl          ;
+; BinCounter_pins.tcl           ;
+; bitToBool.tcl                 ;
+; de0_pins.tcl                  ;
+; deadend_pins.tcl              ;
+; dec16good_pins.tcl            ;
+; decoder3_8_pins.tcl           ;
+; delayedFall_pins.tcl          ;
+; demux1_2_4bits_pins.tcl       ;
+; deriv2_pins.tcl               ;
+; dff21_pins.tcl                ;
+; directPriorityFilter_pins.tcl ;
+; dmux2vec_pins.tcl             ;
+; good_demux_pins.tcl           ;
+; greaterThan_pins.tcl          ;
+; HEXSS.vhd                     ;
+; mixd_latch_pins.tcl           ;
+; mux2_4bits.tcl                ;
+; mux2_pins.tcl                 ;
+; mux2vec_pins.tcl              ;
+; mux3_8_pins.tcl               ;
+; MUX4T1A_pins.tcl              ;
+; onesCounterB_pins.tcl         ;
+; priorityFilter_pins.tcl       ;
+; rise.vhd                      ;
+; rise_ext_pins.tcl             ;
+; seriesDetector_pins.tcl       ;
+; test_transmitter.bdf          ;
+; test_transmitter_de0.tcl      ;
+; test_transmitter_pins.tcl     ;
+; timer2_pins.tcl               ;
+; timer_pins.tcl                ;
+; transmitter.qsf               ;
+; transmitter.vhd               ;
+; uart.qpf                      ;
+; vpipe_pins.tcl                ;
+; zeroMaxSequence_pins.tcl      ;
++-------------------------------+
+
+
