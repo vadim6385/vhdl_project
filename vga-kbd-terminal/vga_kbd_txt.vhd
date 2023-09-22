@@ -12,8 +12,8 @@ entity vga_kbd_txt is
         enter_tick : in std_logic;
         up_tick, down_tick , left_tick, right_tick : in std_logic;
         bck_spc_tick : in std_logic;
-       we : in std_logic;
-        text_rgb : out std_logic_vector(2 downto 0)
+        we : in std_logic;
+        text_rgb : out std_logic_vector(3 downto 0)
     );
 end vga_kbd_txt;
 
@@ -40,21 +40,33 @@ architecture arch of vga_kbd_txt is
     signal pix_x2_reg, pix_y2_reg : unsigned(9 downto 0);
     
     signal bck_spc : std_logic;
-    signal font_rgb, font_rev_rgb : std_logic_vector(2 downto 0);
+    signal font_rgb, font_rev_rgb : std_logic_vector(3 downto 0);
 begin
     debounce_unit0 : entity work.debounce
-        port map(clk => clk, reset => reset, sw => btn(0),
-                    db_level => open, db_tick => move_x_tick);
+        port map(   clk => clk, 
+                    reset => reset, 
+                    sw => btn(0),
+                    db_level => open, 
+                    db_tick => move_x_tick);
     debounce_unit1 : entity work.debounce
-        port map(clk => clk, reset => reset, sw => btn(1),
-                    db_level => open, db_tick => move_y_tick);
+        port map(   clk => clk, 
+                    reset => reset, sw => btn(1),
+                    db_level => open, 
+                    db_tick => move_y_tick);
     font_unit : entity work.font_rom
-        port map(clk => clk, addr => rom_addr, data => font_word);
+        port map(   clk => clk, 
+                    addr => rom_addr, 
+                    data => font_word);
     video_ram : entity work.altera_dual_port_ram_sync
-        generic map(ADDR_WIDTH => 12, DATA_WIDTH => 7)
-        port map(clk => clk, we => we_wth_bck,
-                    addr_a => addr_w, addr_b => addr_r,
-                    din_a => din, dout_a => open, dout_b => dout);
+        generic map(    ADDR_WIDTH => 12, 
+                        DATA_WIDTH => 7)
+        port map(   clk => clk, 
+                    we => we_wth_bck,
+                    addr_a => addr_w, 
+                    addr_b => addr_r,
+                    din_a => din, 
+                    dout_a => open, 
+                    dout_b => dout);
     process(clk)
     begin    
         if(clk'event and clk = '1') then
@@ -93,15 +105,15 @@ begin
         cur_y_reg + 1 when enter_tick = '1' or down_tick = '1' or (we = '1' and cur_x_reg = MAX_X -1) else
         cur_y_reg - 1 when up_tick = '1' or (bck_spc_tick = '1' and cur_x_reg = 0) else
         cur_y_reg;
-    font_rgb <= "000" when font_bit = '1' else "111";
-    font_rev_rgb <= "000" when font_bit = '1' else "010";
+    font_rgb <= "0000" when font_bit = '1' else "1111";
+    font_rev_rgb <= "0000" when font_bit = '1' else "0010";
     cursor_on <= '1' when pix_y2_reg(8 downto 4) = cur_y_reg and pix_y2_reg(3 downto 0) >= "1110" and
                                  pix_x2_reg(9 downto 3) = cur_x_reg else
                      '0';
     process(video_on, cursor_on, font_rgb, font_rev_rgb)
     begin
         if video_on = '0' then
-            text_rgb <= "000";
+            text_rgb <= "0000";
         else
             if cursor_on = '1' then
                 text_rgb <= font_rev_rgb;
