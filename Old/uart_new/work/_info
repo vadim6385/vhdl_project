@@ -1,0 +1,132 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\VHDL\uart_new
+Euart_controller
+Z1 w1694271955
+Z2 DPx4 ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
+Z3 DPx4 ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
+Z4 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+Z5 8uart_controller.vhd
+Z6 Fuart_controller.vhd
+l0
+L6
+V5OH;`c2I0X0Vk7WfHi7]60
+Z7 OV;C;6.5b;42
+32
+o-O0
+Z8 tExplicit 1
+!s100 `WE^[JPm4`V]_2zmRA9m93
+Abehavioral
+Z9 DEx4 work 7 uart_rx 0 22 4Ngi>>YC^TO1Nn0Ja9?4?1
+Z10 DEx4 work 7 uart_tx 0 22 [R6F4I2m;gjkofLn[bcL72
+R2
+R3
+R4
+Z11 DEx4 work 15 uart_controller 0 22 5OH;`c2I0X0Vk7WfHi7]60
+l21
+L18
+V?4E2]MhAHA[37__n3m3?j0
+!s100 >V_jYz1WIPo:hSZWLeChT2
+R7
+32
+Z12 Mx3 4 ieee 14 std_logic_1164
+Z13 Mx2 4 ieee 15 std_logic_arith
+Z14 Mx1 4 ieee 18 std_logic_unsigned
+o-O0
+R8
+Euart_controller_tb
+Z15 w1694272663
+R2
+R3
+R4
+Z16 8uart_controller_tb.vhd
+Z17 Fuart_controller_tb.vhd
+l0
+L6
+VZIX<fc8f4lK36Wk1?c2482
+!s100 MNfJL40lmge6`bS8:@H6R0
+R7
+32
+o-O0
+R8
+Asim
+R11
+R2
+R3
+R4
+Z18 DEx4 work 18 uart_controller_tb 0 22 ZIX<fc8f4lK36Wk1?c2482
+l21
+L9
+Z19 VE]NOR^<DdAJ9fS:RHzbmF2
+Z20 !s100 ;V>N_S<=Gc_@hng>Xn3`:2
+R7
+32
+R12
+R13
+R14
+o-O0
+R8
+Euart_rx
+Z21 w1694271864
+R2
+R3
+R4
+Z22 8uart_rx.vhd
+Z23 Fuart_rx.vhd
+l0
+L6
+V4Ngi>>YC^TO1Nn0Ja9?4?1
+R7
+32
+o-O0
+R8
+!s100 _Ka^Gn:MK>UiSYR@TimE93
+Abehavioral
+R2
+R3
+R4
+R9
+l22
+L14
+V8j2>0POM=N8_R27AQn8Lz1
+R7
+32
+R12
+R13
+R14
+o-O0
+R8
+!s100 >IT_eaa^l@Y]2z^dbXj5G2
+Euart_tx
+Z24 w1694271790
+R2
+R3
+R4
+Z25 8uart_tx.vhd
+Z26 Fuart_tx.vhd
+l0
+L6
+V[R6F4I2m;gjkofLn[bcL72
+R7
+32
+o-O0
+R8
+!s100 =7Q?gIQeGVYiDj_07HFY=1
+Abehavioral
+R2
+R3
+R4
+R10
+l23
+L15
+V9Xlo1h:6J9<O7Ta2k;g5I1
+R7
+32
+R12
+R13
+R14
+o-O0
+R8
+!s100 VCeYMUSf6Mj<EL12FC7h;3
