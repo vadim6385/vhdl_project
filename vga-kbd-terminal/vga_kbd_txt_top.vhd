@@ -80,7 +80,7 @@ architecture arc_vga_kbd_txt_top of vga_kbd_txt_top is
     signal pixel_x, pixel_y     : std_logic_vector(9 downto 0);
     signal video_on, pixel_tick : std_logic;
     signal rgb_reg, rgb_next    : std_logic_vector(3 downto 0);
-    signal vga_reg, vga_next    : std_logic_vector(6 downto 0);
+    signal vga_reg              : std_logic_vector(6 downto 0);
     --kbd signals
     signal scan_data, w_data : std_logic_vector(7 downto 0);
     signal kb_not_empty, kb_buf_empty : std_logic;
@@ -89,9 +89,9 @@ architecture arc_vga_kbd_txt_top of vga_kbd_txt_top is
     signal up_tick, down_tick, left_tick, right_tick : std_logic;
     signal bck_spc_tick : std_logic;
     --uart_signals
-    signal dout_sig : std_logic;
-    signal uart_din, uart_din_next : std_logic_vector(7 downto 0);
-    signal uart_dout, uart_dout_next : std_logic_vector(7 downto 0);
+    signal dout_sig             : std_logic;
+    signal uart_din             : std_logic_vector(7 downto 0);
+    signal uart_dout            : std_logic_vector(7 downto 0);
 begin
     vga_sync_unit : entity work.vga_sync
         port map(   clk => clk_50, 
@@ -140,8 +140,8 @@ begin
                     resetN => not(key(0)),
                     rx => uart_rx,
                     tx => uart_tx,
-                    din => uart_din_next,
-                    dout => uart_dout_next,
+                    din => uart_din,
+                    dout => uart_dout,
                     read_dout => enter_tick,
                     write_din => dout_sig,
                     dout_new => dout_sig
@@ -151,14 +151,16 @@ begin
         if(clk_50'event and clk_50 = '1') then
             if(pixel_tick = '1') then
                 rgb_reg <= rgb_next;
-                vga_reg <= vga_next;
-                uart_din <= uart_din_next;
-                uart_dout <= uart_dout_next;
+            end if;
+            if(dout_sig = '1') then
+                vga_reg <= uart_dout(6 downto 0);
+            else
+                vga_reg <= ascii_code(6 downto 0);
             end if;
         end if;
     end process;
-    vga_next <= ascii_code(6 downto 0);
-    uart_din_next <= ascii_code;
+    -- vga_next <= ascii_code(6 downto 0);
+    uart_din <= ascii_code;
     --vga_next <= uart_dout(6 downto 0);
     kb_not_empty <= not kb_buf_empty;
     vga_r <= (others => rgb_reg(2));

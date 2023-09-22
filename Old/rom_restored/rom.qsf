@@ -96,7 +96,6 @@ set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-ST
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name VHDL_FILE receiver.vhd
 set_global_assignment -name VHDL_FILE rom.vhd
 set_global_assignment -name BDF_FILE test_uart.bdf
@@ -104,3 +103,4 @@ set_global_assignment -name VHDL_FILE transmitter.vhd
 set_global_assignment -name VHDL_FILE uart.vhd
 set_global_assignment -name VHDL_FILE HEXSS.vhd
 set_global_assignment -name BDF_FILE rom_test.bdf
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
