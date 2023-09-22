@@ -15,6 +15,67 @@ entity vga_kbd_txt_top is
 end vga_kbd_txt_top;
 
 architecture arc_vga_kbd_txt_top of vga_kbd_txt_top is
+
+    component vga_kbd_txt
+    port(
+        clk, reset : in std_logic;
+        btn : in std_logic_vector(1 downto 0);
+        key_code : in std_logic_vector(6 downto 0);
+        video_on : in std_logic;
+        pixel_x, pixel_y : in std_logic_vector(9 downto 0);
+        enter_tick : in std_logic;
+        up_tick, down_tick , left_tick, right_tick : in std_logic;
+        bck_spc_tick : in std_logic;
+        we : in std_logic;
+        text_rgb : out std_logic_vector(3 downto 0)
+    );
+    end component;
+
+    component vga_sync
+        port(
+            clk, reset : in std_logic;
+            hsync, vsync : out std_logic;
+            video_on, p_tick : out std_logic;
+            pixel_x, pixel_y : out std_logic_vector(9 downto 0)
+        );
+    end component;
+    
+    component kb_code
+    generic(W_SIZE : integer := 2);
+    port(
+        clk, reset : in std_logic;
+        ps2d, ps2c : in std_logic;
+        rd_key_code : in std_logic;
+        key_code : out std_logic_vector(7 downto 0);
+        enter_tick : out std_logic;
+        up_tick, down_tick , left_tick, right_tick : out std_logic;
+        bck_spc_tick : out std_logic;
+        kb_buf_empty : out std_logic
+    );
+    end component;
+    
+    component key2ascii
+       port (
+          key_code: in std_logic_vector(7 downto 0);  -- Input keyboard scan code
+          ascii_code: out std_logic_vector(7 downto 0) -- Output ASCII code
+       );
+    end component;
+    
+    component uart
+        port (resetN      :in  std_logic                         ;
+            clk         :in  std_logic                         ;
+            din         :in  std_logic_vector (7 downto 0)     ;
+            write_din   :in  std_logic                         ;
+            rx          :in  std_logic                         ;
+            read_dout   :in  std_logic                         ;
+            tx          :out std_logic                         ;
+            tx_ready    :out std_logic                         ;
+            rx_ready    :out std_logic                         ;
+            dout        :out std_logic_vector(7 downto 0)      ;
+            dout_ready  :out std_logic                         ;
+            dout_new    :out std_logic                         ) ;
+    end component ;
+
     -- vga signals
     signal pixel_x, pixel_y     : std_logic_vector(9 downto 0);
     signal video_on, pixel_tick : std_logic;
