@@ -1,0 +1,27 @@
+Quartus II Archive log --	C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_uart_term.qarlog
+
+Archive:	C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_uart_term.qar
+Date:		Sat Sep 23 17:45:14 2023
+Quartus II		9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/altera_dual_port_ram_sync.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/de0_pins.tcl
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/debounce.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/fifo.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/font_rom.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/mod_m_counter.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/uart_rx.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/uart_tx.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/uartcore.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_sync.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_uart_term.qpf
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_uart_term.qsf
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_uart_term.vhd
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_uart_term.vwf
+C:/GitRepos/vhdl_project/vga-uart-terminal-master/vga_uart_term_top.vhd
+c:/altera/91sp2/quartus/bin/assignment_defaults.qdf
+	======= Total: 16 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

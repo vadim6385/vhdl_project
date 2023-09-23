@@ -40,12 +40,19 @@ architecture arch of vga_uart_term is
     signal font_rgb, font_rev_rgb : std_logic_vector(3 downto 0);
 begin
     font_unit : entity work.font_rom
-        port map(clk => clk, addr => rom_addr, data => font_word);
+        port map(   clk => clk, 
+                    addr => rom_addr, 
+                    data => font_word);
     video_ram : entity work.altera_dual_port_ram_sync
-        generic map(ADDR_WIDTH => 12, DATA_WIDTH => 7)
-        port map(clk => clk, we => we_wth_bck,
-                    addr_a => addr_w, addr_b => addr_r,
-                    din_a => din, dout_a => open, dout_b => dout);
+        generic map(    ADDR_WIDTH => 12, 
+                        DATA_WIDTH => 7)
+        port map(   clk => clk, 
+                    we => we_wth_bck,
+                    addr_a => addr_w, 
+                    addr_b => addr_r,
+                    din_a => din, 
+                    dout_a => open, 
+                    dout_b => dout);
     process(clk)
     begin    
         if(clk'event and clk = '1') then
