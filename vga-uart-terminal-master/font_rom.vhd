@@ -1,4 +1,3 @@
--- Listing 13.1
 -- ROM with synchonous read (inferring Block RAM)
 -- character ROM
 --   - 8-by-16 (8-by-2^4) font
