@@ -157,18 +157,18 @@ if {![is_project_open]} {
   set_location_assignment PIN_H19 -to VGA_R[0]
   set_location_assignment PIN_H17 -to VGA_R[1]
   set_location_assignment PIN_H20 -to VGA_R[2]
-#   set_location_assignment PIN_H21 -to RED[3]
+  set_location_assignment PIN_H21 -to VGA_R[3]
 
   set_location_assignment PIN_H22 -to VGA_G[0]
   set_location_assignment PIN_J17 -to VGA_G[1]
   set_location_assignment PIN_K17 -to VGA_G[2]
-#   set_location_assignment PIN_J21 -to GREEN[3]
+  set_location_assignment PIN_J21 -to VGA_G[3]
 
 ;# Assignments=>Device..=>Device and pin options=>Dual Purpose Pins=>nCEO=?Used as regular I/O
   set_location_assignment PIN_K22 -to VGA_B[0] ;# nCE0 ... read privous comment
   set_location_assignment PIN_K21 -to VGA_B[1]
   set_location_assignment PIN_J22 -to VGA_B[2]
-#   set_location_assignment PIN_K18 -to BLUE[3]
+  set_location_assignment PIN_K18 -to VGA_B[3]
 
   set_location_assignment PIN_L21 -to VGA_HS
   set_location_assignment PIN_L22 -to VGA_VS

@@ -3,31 +3,31 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 entity uart_rx is
-   generic(
-      DBIT: integer:=8;     -- # data bits
-      SB_TICK: integer:=16  -- # ticks for stop bits
-   );
-   port(
-      clk, reset: in std_logic;
-      rx: in std_logic;
-      s_tick: in std_logic;
-      rx_done_tick: out std_logic;
-		enter_tick : out std_logic;
-		bck_spc_tick : out std_logic;
-      dout: out std_logic_vector(7 downto 0)
-   );
+    generic(
+        DBIT: integer:=8;     -- # data bits
+        SB_TICK: integer:=16  -- # ticks for stop bits
+    );
+    port(
+        clk, reset: in std_logic;
+        rx: in std_logic;
+        s_tick: in std_logic;
+        rx_done_tick: out std_logic;
+        enter_tick : out std_logic;
+        bck_spc_tick : out std_logic;
+        dout: out std_logic_vector(7 downto 0)
+    );
 end uart_rx ;
 
 architecture arch of uart_rx is
-   type state_type is (idle, start, data, stop);
-   signal state_reg, state_next: state_type;
-   signal s_reg, s_next: unsigned(3 downto 0);
-   signal n_reg, n_next: unsigned(2 downto 0);
-   signal b_reg, b_next: std_logic_vector(7 downto 0);
+    type state_type is (idle, start, data, stop);
+    signal state_reg, state_next: state_type;
+    signal s_reg, s_next: unsigned(3 downto 0);
+    signal n_reg, n_next: unsigned(2 downto 0);
+    signal b_reg, b_next: std_logic_vector(7 downto 0);
 begin
-   -- FSMD state & data registers
-   process(clk,reset)
-   begin
+    -- FSMD state & data registers
+    process(clk,reset)
+    begin
       if reset='1' then
          state_reg <= idle;
          s_reg <= (others=>'0');
@@ -39,17 +39,17 @@ begin
          n_reg <= n_next;
          b_reg <= b_next;
       end if;
-   end process;
-   -- next-state logic & data path functional units/routing
-   process(state_reg,s_reg,n_reg,b_reg,s_tick,rx)
-   begin
+    end process;
+    -- next-state logic & data path functional units/routing
+    process(state_reg,s_reg,n_reg,b_reg,s_tick,rx)
+    begin
       state_next <= state_reg;
       s_next <= s_reg;
       n_next <= n_reg;
       b_next <= b_reg;
       rx_done_tick <='0';
-		enter_tick <= '0';
-		bck_spc_tick <= '0';
+        enter_tick <= '0';
+        bck_spc_tick <= '0';
       case state_reg is
          when idle =>
             if rx='0' then
@@ -84,17 +84,17 @@ begin
             if (s_tick = '1') then
                if s_reg=(SB_TICK-1) then
                   state_next <= idle;
-						if b_reg = "00001101" then
-							enter_tick <= '1';
-						elsif b_reg = "00001000" then
-							bck_spc_tick <= '1';
-						end if;
-						rx_done_tick <='1';
+                        if b_reg = "00001101" then
+                            enter_tick <= '1';
+                        elsif b_reg = "00001000" then
+                            bck_spc_tick <= '1';
+                        end if;
+                        rx_done_tick <='1';
                else
                   s_next <= s_reg + 1;
                end if;
             end if;
       end case;
-   end process;
-   dout <= b_reg;
+    end process;
+    dout <= b_reg;
 end arch;
