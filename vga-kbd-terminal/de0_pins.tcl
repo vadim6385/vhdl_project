@@ -41,7 +41,7 @@ if {![is_project_open]} {
    ;################################
 
 
-  # set_location_assignment PIN_J6 -to SW[0] ;# SW[0]
+  set_location_assignment PIN_J6 -to input_sw ;# SW[0]
   # set_location_assignment PIN_H5 -to SW[1] ;# SW[1]
   # set_location_assignment PIN_H6 -to SW[2] ;# SW[2]
   # set_location_assignment PIN_G4 -to SW[3] ;# SW[3]
@@ -126,8 +126,8 @@ if {![is_project_open]} {
    ;# on board ADM3202 device produced RS232 Voltages but with no DB9 connector
 
 
-#   set_location_assignment PIN_U22 -to RXD
-#   set_location_assignment PIN_U21 -to TXD
+  set_location_assignment PIN_U22 -to uart_tx
+  set_location_assignment PIN_U21 -to uart_rx
 #   set_location_assignment PIN_V22 -to RTS
 #   set_location_assignment PIN_V21 -to CTS
 
