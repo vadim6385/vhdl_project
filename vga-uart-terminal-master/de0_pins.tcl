@@ -19,7 +19,7 @@ if {![is_project_open]} {
    ;# Clock Signals #
    ;#################
 
-  set_location_assignment PIN_G21 -to clk_50     ;# Global Clock 4
+  set_location_assignment PIN_G21 -to CLOCK_50     ;# Global Clock 4
 #   set_location_assignment PIN_G21 -to CLK        ;# Global Clock 4 (just another name)
 #   set_location_assignment PIN_G21 -to CLOCK_50   ;# Global Clock 4 (just another name)
 
@@ -31,9 +31,9 @@ if {![is_project_open]} {
    ;# Keys are not debounced !                   #
    ;##############################################
 
-  set_location_assignment PIN_H2 -to key[0] ;# KEY0/BUTTON0 (right button covered)
-  set_location_assignment PIN_G3 -to key[1] ;# KEY1/BUTTON1 (mid button - half covered)
-  set_location_assignment PIN_F1 -to key[2] ;# KEY2/BUTTON2 (left button)
+  set_location_assignment PIN_H2 -to KEY[0] ;# KEY0/BUTTON0 (right button covered)
+  set_location_assignment PIN_G3 -to KEY[1] ;# KEY1/BUTTON1 (mid button - half covered)
+  set_location_assignment PIN_F1 -to KEY[2] ;# KEY2/BUTTON2 (left button)
 
 
    ;################################
@@ -41,13 +41,13 @@ if {![is_project_open]} {
    ;################################
 
 
-  set_location_assignment PIN_J6 -to input_sw ;# SW[0]
-  # set_location_assignment PIN_H5 -to SW[1] ;# SW[1]
-  # set_location_assignment PIN_H6 -to SW[2] ;# SW[2]
-  # set_location_assignment PIN_G4 -to SW[3] ;# SW[3]
-  # set_location_assignment PIN_G5 -to SW[4] ;# SW[4]
-  # set_location_assignment PIN_J7 -to SW[5] ;# SW[5]
-  # set_location_assignment PIN_H7 -to SW[6] ;# SW[6]
+#   set_location_assignment PIN_J6 -to SW[0] ;# SW[0]
+#   set_location_assignment PIN_H5 -to SW[1] ;# SW[1]
+#   set_location_assignment PIN_H6 -to SW[2] ;# SW[2]
+#   set_location_assignment PIN_G4 -to SW[3] ;# SW[3]
+#   set_location_assignment PIN_G5 -to SW[4] ;# SW[4]
+#   set_location_assignment PIN_J7 -to SW[5] ;# SW[5]
+#   set_location_assignment PIN_H7 -to SW[6] ;# SW[6]
 #   set_location_assignment PIN_E3 -to SW[7] ;# SW[7]
 #   set_location_assignment PIN_E4 -to SW[8] ;# SW[8]
 #   set_location_assignment PIN_D2 -to SW[9] ;# SW[9]
@@ -126,8 +126,8 @@ if {![is_project_open]} {
    ;# on board ADM3202 device produced RS232 Voltages but with no DB9 connector
 
 
-  set_location_assignment PIN_U22 -to uart_tx
-  set_location_assignment PIN_U21 -to uart_rx
+  set_location_assignment PIN_U22 -to UART_RXD
+  set_location_assignment PIN_U21 -to UART_TXD
 #   set_location_assignment PIN_V22 -to RTS
 #   set_location_assignment PIN_V21 -to CTS
 
@@ -154,24 +154,24 @@ if {![is_project_open]} {
    ;# VGA interface #
    ;#################
 
-  set_location_assignment PIN_H19 -to vga_r[0]
-  set_location_assignment PIN_H17 -to vga_r[1]
-  set_location_assignment PIN_H20 -to vga_r[2]
-  set_location_assignment PIN_H21 -to vga_r[3]
+  set_location_assignment PIN_H19 -to VGA_R[0]
+  set_location_assignment PIN_H17 -to VGA_R[1]
+  set_location_assignment PIN_H20 -to VGA_R[2]
+  set_location_assignment PIN_H21 -to VGA_R[3]
 
-  set_location_assignment PIN_H22 -to vga_g[0]
-  set_location_assignment PIN_J17 -to vga_g[1]
-  set_location_assignment PIN_K17 -to vga_g[2]
-  set_location_assignment PIN_J21 -to vga_g[3]
+  set_location_assignment PIN_H22 -to VGA_G[0]
+  set_location_assignment PIN_J17 -to VGA_G[1]
+  set_location_assignment PIN_K17 -to VGA_G[2]
+  set_location_assignment PIN_J21 -to VGA_G[3]
 
 ;# Assignments=>Device..=>Device and pin options=>Dual Purpose Pins=>nCEO=?Used as regular I/O
-  set_location_assignment PIN_K22 -to vga_b[0] ;# nCE0 ... read privous comment
-  set_location_assignment PIN_K21 -to vga_b[1]
-  set_location_assignment PIN_J22 -to vga_b[2]
-  set_location_assignment PIN_K18 -to vga_b[3]
+  set_location_assignment PIN_K22 -to VGA_B[0] ;# nCE0 ... read privous comment
+  set_location_assignment PIN_K21 -to VGA_B[1]
+  set_location_assignment PIN_J22 -to VGA_B[2]
+  set_location_assignment PIN_K18 -to VGA_B[3]
 
-  set_location_assignment PIN_L21 -to vgaHsync
-  set_location_assignment PIN_L22 -to vgaVsync
+  set_location_assignment PIN_L21 -to VGA_HS
+  set_location_assignment PIN_L22 -to VGA_VS
 
 
    ;##################################################
@@ -179,8 +179,8 @@ if {![is_project_open]} {
    ;# a splitting Y cable can be used to have both ! #
    ;##################################################
 
-  set_location_assignment PIN_P22 -to kbd_clk ;# pin6
-  set_location_assignment PIN_P21 -to kbd_dat ;# pin1
+#   set_location_assignment PIN_P22 -to PS2_KBCLK ;# pin6
+#   set_location_assignment PIN_P21 -to PS2_KBDAT ;# pin1
 
 #   set_location_assignment PIN_R21 -to PS2_MSCLK ;# pin8
 #   set_location_assignment PIN_R22 -to PS2_MSDAT ;# pin2
