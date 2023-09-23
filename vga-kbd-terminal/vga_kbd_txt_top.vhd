@@ -11,7 +11,10 @@ entity vga_kbd_txt_top is
         kbd_dat, kbd_clk        : in std_logic;
         --UART signals
         uart_tx                 : out std_logic;
-        uart_rx                 : out std_logic );
+        uart_rx                 : in std_logic;
+        --Switch to change input between KB and UART
+        input_sw                : in std_logic
+        );
 end vga_kbd_txt_top;
 
 architecture arc_vga_kbd_txt_top of vga_kbd_txt_top is
@@ -20,12 +23,17 @@ architecture arc_vga_kbd_txt_top of vga_kbd_txt_top is
     signal video_on, pixel_tick : std_logic;
     signal rgb_reg, rgb_next : std_logic_vector(3 downto 0);
     --kbd signals
-    signal scan_data, w_data : std_logic_vector(7 downto 0);
     signal kb_not_empty, kb_buf_empty : std_logic;
     signal key_code, ascii_code : std_logic_vector(7 downto 0);
     signal enter_tick : std_logic;
     signal up_tick, down_tick, left_tick, right_tick : std_logic;
     signal bck_spc_tick : std_logic;
+    --UART signals
+    signal rec_data, rec_data1 : std_logic_vector(7 downto 0);
+    signal tx_full, rx_empty : std_logic;
+    signal data_available : std_logic;
+    signal enter_tick_uart : std_logic;
+    signal bck_spc_tick_uart : std_logic;
 begin
     vga_sync_unit : entity work.vga_sync
         port map(   clk => clk_50, 
@@ -36,6 +44,7 @@ begin
                     p_tick => pixel_tick, 
                     pixel_x => pixel_x, 
                     pixel_y => pixel_y);
+
     text_gen_unit : entity work.vga_kbd_txt
         port map(   clk => clk_50, 
                     reset => not(key(0)), 
@@ -52,6 +61,7 @@ begin
                     left_tick => left_tick,
                     right_tick => right_tick, 
                     bck_spc_tick => bck_spc_tick);
+
     kb_code_unit : entity work.kb_code(arch)
         port map(   clk => clk_50, 
                     reset => not(key(0)), 
@@ -66,9 +76,22 @@ begin
                     left_tick => left_tick,
                     right_tick => right_tick, 
                     bck_spc_tick => bck_spc_tick);
+
     key2a_unit : entity work.key2ascii(arch)
         port map(   key_code => key_code, 
                     ascii_code => ascii_code);
+
+    uart_unit  : entity work.uartcore(str_arch)
+        port map(   clk => clk_50,
+                    reset => not(key(0)),
+                    rx => uart_rx,
+                    tx => uart_tx,
+                    tx_full => tx_full,
+                    enter_tick => enter_tick_uart,
+                    bck_spc_tick => bck_spc_tick_uart,
+                    r_data => rec_data,
+                    w_data => rec_data1,
+                    data_available => data_available);
 
     process(clk_50)
     begin
@@ -79,6 +102,7 @@ begin
         end if;
     end process;
     kb_not_empty <= not kb_buf_empty;
+    rec_data1 <= std_logic_vector(unsigned(rec_data));
     vga_r <= (others => rgb_reg(2));
     vga_g <= (others => rgb_reg(1));
     vga_b <= (others => rgb_reg(0));
