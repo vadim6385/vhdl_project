@@ -5,8 +5,7 @@ use ieee.numeric_std.all;
 entity vga_uart_term_top is
     port(
         CLOCK_50 : in std_logic;
-        KEY            : in std_logic_vector(3 downto 0);
-        SW             : in std_logic_vector(6 downto 0);
+        KEY            : in std_logic_vector(2 downto 0);
         UART_RXD : in std_logic;
         UART_TXD : out std_logic;
         VGA_HS, VGA_VS : out std_logic;    
