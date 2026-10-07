@@ -1,2 +1,4 @@
 # vhdl_project
-Final project for VHDL course Vadim Darchuk &amp; Yotam Alter
+Final project for VHDL course
+
+This is a UART console that runs on Altera FPGA
